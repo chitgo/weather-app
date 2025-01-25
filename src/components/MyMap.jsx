@@ -7,6 +7,17 @@ import {
   useMapEvents,
   useMap,
 } from 'react-leaflet'
+import L from 'leaflet'
+
+const defaultIcon = new L.Icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  shadowSize: [41, 41],
+  shadowAnchor: [12, 41],
+})
 
 const GEOCODING_API =
   'https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}&addressdetails=1'
@@ -51,7 +62,7 @@ const MapLeaflet = ({ position, setPosition, fetchWeather }) => {
   }
 
   return (
-    <Marker position={position}>
+    <Marker position={position} icon={defaultIcon}>
       <Popup>Current Location</Popup>
     </Marker>
   )
